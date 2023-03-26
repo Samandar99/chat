@@ -3,16 +3,18 @@
     <UserOne />
     <UserTwo />
   </div>
+  <Modal />
 </template>
 
 <script>
 import UserOne from "@/components/UserOne.vue";
 import UserTwo from "@/components/UserTwo.vue";
-
+import Modal from "@/components/Modal.vue";
 export default {
   components: {
     UserOne,
     UserTwo,
+    Modal,
   },
 };
 </script>

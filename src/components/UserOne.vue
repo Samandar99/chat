@@ -10,20 +10,41 @@
       </div>
     </div>
     <div class="chat">
-      <div class="user__text-one">
-        Привет. Как дела? Где ты изучаешь программирование?
+      <div class="main-chat">
+        <p class="text">Привет. Как дела? Где ты</p>
+        <span>9:00</span>
       </div>
-      
+      <div class="main-chat">
+        <p class="text">salom</p>
+        <span>9:00</span>
+      </div>
     </div>
     <div class="footer__input">
-      <input class="input" type="text" placeholder="Написать сообщение..." />
-      <img class="icon" src="@/assets/images/photos.svg" alt="" />
+      <input
+        v-model="inputUserOne"
+        class="input"
+        type="text"
+        placeholder="Написать сообщение..."
+      />
+      <img
+        lass="icon"
+        v-if="inputUserOne.length > 0"
+        src="@/assets/images/send.svg"
+        alt=""
+      />
+      <img v-else class="icon" src="@/assets/images/photos.svg" alt="" />
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      inputUserOne: "",
+    };
+  },
+};
 </script>
 
 <style scoped>
@@ -41,6 +62,7 @@ export default {};
   padding: 20px 20px;
   border-radius: 0px 0px 10px 10px;
   display: flex;
+  height: 56px;
   justify-content: space-between;
 }
 .user__name {
@@ -54,22 +76,31 @@ export default {};
   align-items: center;
   padding: 31px 21px;
 }
-
+.flo {
+  float: right;
+}
 .set {
   font-size: 14px;
   color: #fff;
 }
-.user__text-one{
-  background: #C4BFFF;
-  
-  
+.user__text-one {
+  padding: 5px;
+  background: #c4bfff;
+  border-radius: 15px 15px 15px 0px;
+  max-width: 80%;
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
 }
 .chat {
   width: 100%;
   height: 631px;
-  background-color: #fff;
+  background: url(@/assets/images/chatback2.png);
+  background-size: cover;
   padding: 10px 10px;
-  
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
 }
 
 ::placeholder {
@@ -82,7 +113,35 @@ export default {};
   color: #fff;
 }
 
+.main-chat {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.main-chat:nth-child(even) {
+  justify-content: flex-end;
+}
+.main-chat:nth-child(odd) {
+  justify-content: flex-start;
+}
+
+.text {
+  max-width: 60%;
+  background: #c4bfff;
+  border-radius: 15px 15px 15px 0px;
+  padding: 5px;
+}
+.text1 {
+  max-width: 60%;
+  background: #d0dcff;
+  border-radius: 15px 15px 0px 15px;
+  padding: 5px;
+}
 .icon {
   cursor: pointer;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 </style>

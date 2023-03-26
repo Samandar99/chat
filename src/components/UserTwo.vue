@@ -9,16 +9,42 @@
         </div>
       </div>
     </div>
-    <div class="chat"></div>
+    <div class="chat">
+      <div class="main-chat">
+        <p class="text">Привет. Как дела? Где ты</p>
+        <span>9:00</span>
+      </div>
+      <div class="main-chat">
+        <p class="text">Привет. Как дела? Где ты</p>
+        <span>9:00</span>
+      </div>
+    </div>
     <div class="footer__input">
-      <input class="input" type="text" placeholder="Написать сообщение..." />
-      <img class="icon" src="@/assets/images/photos.svg" alt="" />
+      <input
+        v-model="inputUserTwo"
+        class="input"
+        type="text"
+        placeholder="Написать сообщение..."
+      />
+      <img
+        v-if="inputUserTwo.length > 0"
+        class="icon"
+        src="@/assets/images/send.svg"
+        alt=""
+      />
+      <img v-else class="icon" src="@/assets/images/photos.svg" alt="" />
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      inputUserTwo: "",
+    };
+  },
+};
 </script>
 
 <style scoped>
@@ -36,6 +62,7 @@ export default {};
   padding: 20px 20px;
   border-radius: 0px 0px 10px 10px;
   display: flex;
+  height: 56px;
   justify-content: space-between;
 }
 .user__name {
@@ -58,7 +85,12 @@ export default {};
 .chat {
   width: 100%;
   height: 631px;
-  background-color: #fff;
+  background: url(@/assets/images/chatback2.png);
+  background-size: cover;
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
 }
 
 ::placeholder {
@@ -73,5 +105,26 @@ export default {};
 
 .icon {
   cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.main-chat {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.main-chat:nth-child(even) {
+  justify-content: flex-start;
+}
+.main-chat:nth-child(odd) {
+  justify-content: flex-end;
+}
+.text {
+  max-width: 60%;
+  background: #c4bfff;
+  border-radius: 15px 15px 15px 0px;
+  padding: 5px;
 }
 </style>
