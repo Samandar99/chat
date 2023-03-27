@@ -32,17 +32,33 @@
         src="@/assets/images/send.svg"
         alt=""
       />
-      <img v-else class="icon" src="@/assets/images/photos.svg" alt="" />
+      <img
+        v-else
+        class="icon"
+        src="@/assets/images/photos.svg"
+        alt=""
+        @click="openModal(true)"
+      />
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    messageUsers: {
+      
+    }
+  },
   data() {
     return {
       inputUserOne: "",
     };
+  },
+  methods: {
+    openModal(open) {
+      this.$emit("openModal", open);
+    },
   },
 };
 </script>

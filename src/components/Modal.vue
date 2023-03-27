@@ -13,7 +13,9 @@
         </label>
       </div>
       <div class="modal__btns">
-        <button class="modal__btn cancel">Отмена</button>
+        <button class="modal__btn cancel" @click="closeModal(false)">
+          Отмена
+        </button>
         <button class="modal__btn add">ОТПРАВИТЬ</button>
       </div>
     </div>
@@ -21,7 +23,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    closeModal(close) {
+      this.$emit("closeModal", close);
+    },
+  },
+};
 </script>
 
 <style>
@@ -64,12 +75,50 @@ export default {};
 }
 .modal__inputs span {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 16px;
+  top: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #6750a4;
 }
 .modal__inputs input,
 .modal__inputs textarea {
   background: #e7e0ec;
   border-radius: 4px;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 23px 0 9px 16px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #49454f;
+  border-bottom: 1px solid #1c1b1f;
+  resize: none;
+}
+
+.modal__btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.modal__btn {
+  font-size: 14px;
+  line-height: 20px;
+  font-family: "RM";
+  background: transparent;
+  padding: 10px 12px;
+  text-transform: uppercase;
+}
+.cancel {
+  color: #cf1b1b;
+  border: none;
+  cursor: pointer;
+}
+.add {
+  color: #6750a4;
+  border: none;
+  cursor: pointer;
 }
 </style>

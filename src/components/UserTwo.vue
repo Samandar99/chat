@@ -32,7 +32,13 @@
         src="@/assets/images/send.svg"
         alt=""
       />
-      <img v-else class="icon" src="@/assets/images/photos.svg" alt="" />
+      <img
+        v-else
+        class="icon"
+        src="@/assets/images/photos.svg"
+        alt=""
+        @click="openModal2(true)"
+      />
     </div>
   </div>
 </template>
@@ -43,6 +49,11 @@ export default {
     return {
       inputUserTwo: "",
     };
+  },
+  methods: {
+    openModal2(open2) {
+      this.$emit("openModal2", open2);
+    },
   },
 };
 </script>
@@ -57,6 +68,7 @@ export default {
   background-color: #323232;
   border-radius: 5px 5px 0px 0px;
 }
+
 .footer__input {
   background-color: #323232;
   padding: 20px 20px;
@@ -65,6 +77,7 @@ export default {
   height: 56px;
   justify-content: space-between;
 }
+
 .user__name {
   font-size: 18px;
   color: #fff;
@@ -96,6 +109,7 @@ export default {
 ::placeholder {
   color: #fff;
 }
+
 .input {
   border: none;
   background: none;
@@ -118,9 +132,11 @@ export default {
 .main-chat:nth-child(even) {
   justify-content: flex-start;
 }
+
 .main-chat:nth-child(odd) {
   justify-content: flex-end;
 }
+
 .text {
   max-width: 60%;
   background: #c4bfff;

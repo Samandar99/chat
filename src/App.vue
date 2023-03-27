@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <UserOne />
-    <UserTwo />
+    <UserOne @openModal="getOpenModal" :messageUsers="messageUsers"/>
+    <UserTwo @openModal2="userTwoOpen" />
   </div>
-  <Modal />
+  <Modal v-if="isOpenModal" @closeModal="isCloseModal" />
 </template>
 
 <script>
@@ -15,6 +15,29 @@ export default {
     UserOne,
     UserTwo,
     Modal,
+  },
+  data() {
+    return {
+      isOpenModal: "",
+      messageUsers: [
+        { message: "Привет. Как дела? Где ты" },
+        { message: "Привет. Как дела? Где ты" },
+        { message: "hello" },
+        { message: "hi" },
+        { message: "Good" },
+      ],
+    };
+  },
+  methods: {
+    getOpenModal(opens) {
+      this.isOpenModal = opens;
+    },
+    isCloseModal(isclose) {
+      this.isOpenModal = isclose;
+    },
+    userTwoOpen(open2) {
+      this.isOpenModal = open2;
+    },
   },
 };
 </script>
